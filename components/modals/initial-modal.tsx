@@ -2,12 +2,16 @@
 
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button"
-import { useForm } from "react-hook-form";
+import FileUpload from "@/components/file-upload";
+
 import * as z from "zod"
 import { zodResolver } from "@hookform/resolvers/zod";
+
 import { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
 
 const InitialModal = () => {
     const [isMounted, setIsMounted] = useState(false)
@@ -54,7 +58,13 @@ const InitialModal = () => {
                 <form className="space-y-8" onSubmit={form.handleSubmit(onSubmit)}>
                     <div className="space-y-8 px-6">
                         <div className="flex justify-center items-center text-center">
-                            TODO: image upload
+                            <FormField control={form.control} name="imageUrl" render={({ field }) => (
+                                <FormItem>
+                                    <FormControl>
+                                        <FileUpload endpoint="serverImage" value={field.value} onChange={field.onChange}></FileUpload>
+                                    </FormControl>
+                                </FormItem>
+                            )}/> 
                         </div>
                         <FormField control={form.control} name="name" render={({ field }) => (
                             <FormItem>
