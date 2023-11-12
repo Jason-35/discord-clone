@@ -16,20 +16,21 @@ import { useRouter } from "next/navigation";
 import axios from "axios";
 import { useModal } from "@/hooks/use-modal-store";
 
+const formSchema = z.object({
+    name: z.string().min(1, {
+        message: "Server name is required."
+    }),
+    imageUrl: z.string().min(1, {
+        message: "Server image is required."
+    })
+})
+
 export const CreateServerModal = () => {
     const { isOpen, onClose, type } = useModal()
     const router = useRouter()
 
     const isModalOpen = isOpen && type === "createServer"
     
-    const formSchema = z.object({
-        name: z.string().min(1, {
-            message: "Server name is required."
-        }),
-        imageUrl: z.string().min(1, {
-            message: "Server image is required."
-        })
-    })
     
     const form = useForm({
         resolver: zodResolver(formSchema),
