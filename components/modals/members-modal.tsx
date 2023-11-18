@@ -6,7 +6,7 @@ import { useModal } from "@/hooks/use-modal-store";
 import { useState } from "react";
 import { ServerWithMembersWithProfiles } from "@/types";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { UseAvatar } from "@/components/user-avatar";
+import { UserAvatar } from "@/components/user-avatar";
 import { Check, Gavel, Loader2, MoreVertical, Shield, ShieldAlert, ShieldCheck, ShieldQuestion } from "lucide-react";
 
 import qs from "query-string"
@@ -91,7 +91,7 @@ export const MembersModal = () => {
             <ScrollArea className="mt-8 max-h-[420px] pr-6">
                 {server?.members?.map((member) => (
                     <div key={member.id} className="flex items-center gap-x-6 mb-6">
-                        <UseAvatar src={member.profile.imageUrl} />
+                        <UserAvatar src={member.profile.imageUrl} />
                         <div className="flex flex-col gap-y-1">
                             <div className="text-xs font-semibold flex items-center gap-x-1">
                                 {member.profile.name}
