@@ -9,7 +9,7 @@ import axios from "axios"
 import qs from "query-string"
 import { useModal } from "@/hooks/use-modal-store";
 import { EmojiPicker } from "@/components/emoji-picker";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 interface ChatInputProps{
     apiUrl: string;
@@ -45,6 +45,7 @@ export const ChatInput = ({apiUrl, query, name, type} : ChatInputProps) => {
 
             await axios.post(url, values)
             form.reset()
+            router.refresh()
         } catch (error) {
             console.log(error)
         }
