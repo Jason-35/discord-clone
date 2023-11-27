@@ -6,7 +6,6 @@ import { currentProfile } from "@/lib/current-profile";
 import { db } from "@/lib/db";
 import { redirectToSignIn } from "@clerk/nextjs";
 import { ChannelType } from "@prisma/client";
-import { channel } from "diagnostics_channel";
 import { redirect } from "next/navigation";
 
 interface ChannelIdPageProps {
